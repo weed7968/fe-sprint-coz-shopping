@@ -2,9 +2,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Main from "./pages/main";
-import Item from "./pages/item";
+import List from "./pages/list";
 import Bookmark from "./pages/bookmark";
 import styled, { createGlobalStyle } from "styled-components";
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const GlobalStyle = createGlobalStyle`
 		*{
@@ -18,6 +21,15 @@ const Maincont = styled.main`
 `;
 
 function App() {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    axios
+      .get("http://cozshopping.codestates-seb.link/api/v1/products?count=8")
+      .then((res) => {
+        setData(res.data);
+      });
+  }, []);
   return (
     <>
       <GlobalStyle />
@@ -25,9 +37,9 @@ function App() {
         <Header />
         <Maincont>
           <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/products/list" element={<Item />} />
-            <Route path="/bookmark" element={<Bookmark />} />
+            <Route path="/" element={<Main data={data} />} />
+            <Route path="/products/list" element={<List data={data} />} />
+            <Route path="/bookmark" element={<Bookmark data={data} />} />
           </Routes>
         </Maincont>
         <Footer />
