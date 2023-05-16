@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://cozshopping.codestates-seb.link/api/v1/products?count=8")
+      .get("http://cozshopping.codestates-seb.link/api/v1/products?count=")
       .then((res) => {
         setData(res.data);
       });
