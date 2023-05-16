@@ -36,11 +36,15 @@ function App() {
       <BrowserRouter>
         <Header />
         <Maincont>
-          <Routes>
-            <Route path="/" element={<Main data={data} />} />
-            <Route path="/products/list" element={<List data={data} />} />
-            <Route path="/bookmark" element={<Bookmark data={data} />} />
-          </Routes>
+          {data ? (
+            <Routes>
+              <Route path="/" element={<Main data={data} />} />
+              <Route path="/products/list" element={<List data={data} />} />
+              <Route path="/bookmark" element={<Bookmark data={data} />} />
+            </Routes>
+          ) : (
+            <div>Loding...</div>
+          )}
         </Maincont>
         <Footer />
       </BrowserRouter>
