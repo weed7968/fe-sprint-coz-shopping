@@ -10,6 +10,8 @@ const Head = styled.header`
   display: flex;
   align-items: center;
   position: sticky;
+  top: 0;
+  background-color: white;
   box-shadow: 0 0 10px #aaa;
   cursor: default;
 `;
@@ -70,6 +72,7 @@ const Header = () => {
 
   const ClickLogo = () => {
     navigate("/");
+    setOn(false);
   };
 
   const [on, setOn] = useState(false);
