@@ -1,5 +1,5 @@
 const Item = () => {
-  return <div>test2</div>;
+  return <main>상품리스트 화면</main>;
 };
 
 export default Item;
