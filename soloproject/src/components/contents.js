@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+import bookmarkOn from "../img/bookmarkOn.png";
+import bookmarkOff from "../img/bookmarkOff.png";
 
 const Content = styled.div`
   margin-top: 30px;
@@ -8,10 +10,18 @@ const Content = styled.div`
   }
 `;
 
-const Image = styled.img`
+const Image = styled.div`
   width: 350px;
   height: 250px;
   border-radius: 15px;
+  padding: 10px;
+  background-image: url(${(props) => props.img});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 `;
 
 const Title = styled.h2`
@@ -64,6 +74,7 @@ const Modal = styled.div`
   position: fixed;
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -72,6 +83,23 @@ const Modal = styled.div`
 
 const ModalTitle = styled.h2`
   color: white;
+  padding-left: 20px;
+  padding-bottom: 10px;
+`;
+
+const ModalCloseBtn = styled.button`
+  width: 45px;
+  height: 40px;
+  float: right;
+  align-self: flex-start;
+  border: none;
+  color: white;
+  background-color: transparent;
+  font-size: 30px;
+  font-weight: 800;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Contents = ({ item }) => {
@@ -80,7 +108,7 @@ const Contents = ({ item }) => {
     setOpen(false);
   };
 
-  const clickModalbg = () => {
+  const closeModal = () => {
     setOpen(true);
   };
 
@@ -88,12 +116,18 @@ const Contents = ({ item }) => {
     case "Exhibition":
       return (
         <>
-          <Modalbg open={open} onClick={clickModalbg} />
+          <Modalbg open={open} onClick={closeModal} />
           <Modal open={open} img={item.image_url}>
-            <ModalTitle>{item.title}</ModalTitle>
+            <ModalTitle>
+              <img src={bookmarkOff} />
+              {item.title}
+            </ModalTitle>
+            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
-            <Image src={item.image_url} />
+            <Image img={item.image_url}>
+              <img src={bookmarkOff} />
+            </Image>
             <Title>{item.title}</Title>
             <div>{item.sub_title}</div>
           </Content>
@@ -102,12 +136,18 @@ const Contents = ({ item }) => {
     case "Brand":
       return (
         <>
-          <Modalbg open={open} onClick={clickModalbg} />
+          <Modalbg open={open} onClick={closeModal} />
           <Modal open={open} img={item.brand_image_url}>
-            <ModalTitle>{item.brand_name}</ModalTitle>
+            <ModalTitle>
+              <img src={bookmarkOff} />
+              {item.brand_name}
+            </ModalTitle>
+            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
-            <Image src={item.brand_image_url} />
+            <Image img={item.brand_image_url}>
+              <img src={bookmarkOff} />
+            </Image>
             <Title>
               {item.brand_name}
               <Follow>관심 고객수</Follow>
@@ -119,12 +159,17 @@ const Contents = ({ item }) => {
     case "Category":
       return (
         <>
-          <Modalbg open={open} onClick={clickModalbg} />
+          <Modalbg open={open} onClick={closeModal} />
           <Modal open={open} img={item.image_url}>
-            <ModalTitle>#{item.title}</ModalTitle>
+            <ModalTitle>
+              <img src={bookmarkOff} />#{item.title}
+            </ModalTitle>
+            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
-            <Image src={item.image_url} />
+            <Image img={item.image_url}>
+              <img src={bookmarkOff} />
+            </Image>
             <Title>#{item.title}</Title>
           </Content>
         </>
@@ -132,12 +177,18 @@ const Contents = ({ item }) => {
     case "Product":
       return (
         <>
-          <Modalbg open={open} onClick={clickModalbg} />
+          <Modalbg open={open} onClick={closeModal} />
           <Modal open={open} img={item.image_url}>
-            <ModalTitle>#{item.title}</ModalTitle>
+            <ModalTitle>
+              <img src={bookmarkOff} />
+              {item.title}
+            </ModalTitle>
+            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
-            <Image src={item.image_url} />
+            <Image img={item.image_url}>
+              <img src={bookmarkOff} />
+            </Image>
             <Title>
               {item.title}
               <Discount>{item.discountPercentage}%</Discount>
