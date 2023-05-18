@@ -6,8 +6,7 @@ import List from "./pages/list";
 import Bookmark from "./pages/bookmark";
 import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const GlobalStyle = createGlobalStyle`
 		*{
@@ -20,6 +19,8 @@ const Maincont = styled.main`
   margin: 30px 10%;
 `;
 
+export const AppContext = createContext();
+
 function App() {
   const [data, setData] = useState();
 
@@ -30,24 +31,29 @@ function App() {
         setData(res.data);
       });
   }, []);
+
+  const [bookmark, setBookmark] = useState([18, 80, 6, 54]);
+
   return (
     <>
-      <GlobalStyle />
-      <BrowserRouter>
-        <Header />
-        <Maincont>
-          {data ? (
-            <Routes>
-              <Route path="/" element={<Main data={data} />} />
-              <Route path="/products/list" element={<List data={data} />} />
-              <Route path="/bookmark" element={<Bookmark data={data} />} />
-            </Routes>
-          ) : (
-            <div>Loding...</div>
-          )}
-        </Maincont>
-        <Footer />
-      </BrowserRouter>
+      <AppContext.Provider value={{ bookmark, setBookmark }}>
+        <GlobalStyle />
+        <BrowserRouter>
+          <Header />
+          <Maincont>
+            {data ? (
+              <Routes>
+                <Route path="/" element={<Main data={data} />} />
+                <Route path="/products/list" element={<List data={data} />} />
+                <Route path="/bookmark" element={<Bookmark data={data} />} />
+              </Routes>
+            ) : (
+              <div>Loding...</div>
+            )}
+          </Maincont>
+          <Footer />
+        </BrowserRouter>
+      </AppContext.Provider>
     </>
   );
 }

@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import bookmarkOn from "../img/bookmarkOn.png";
 import bookmarkOff from "../img/bookmarkOff.png";
+import { AppContext } from "../App";
 
 const Content = styled.div`
   margin-top: 30px;
+  margin: 0 5px;
   &:hover {
     cursor: pointer;
   }
@@ -104,29 +106,46 @@ const ModalCloseBtn = styled.button`
 
 const Contents = ({ item }) => {
   const [open, setOpen] = useState(true);
+
+  const { bookmark, setBookmark } = useContext(AppContext);
+
+  const [bookmarked, setBookmarked] = useState(bookmark.includes(item.id));
+
+  const Bookmarked = bookmarked ? bookmarkOn : bookmarkOff;
+
   const OpenModal = () => {
     setOpen(false);
   };
 
-  const closeModal = () => {
+  const CloseModal = () => {
     setOpen(true);
+  };
+
+  const Bookmark = (e) => {
+    e.stopPropagation();
+    const newBookmark = bookmark.includes(item.id)
+      ? bookmark.filter((el) => el !== item.id)
+      : [...bookmark, item.id];
+
+    setBookmark(newBookmark);
+    setBookmarked(!bookmark.includes(item.id));
   };
 
   switch (item.type) {
     case "Exhibition":
       return (
         <>
-          <Modalbg open={open} onClick={closeModal} />
+          <Modalbg open={open} onClick={CloseModal} />
           <Modal open={open} img={item.image_url}>
             <ModalTitle>
-              <img src={bookmarkOff} />
+              <img src={Bookmarked} onClick={Bookmark} />
               {item.title}
             </ModalTitle>
-            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
+            <ModalCloseBtn onClick={CloseModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
             <Image img={item.image_url}>
-              <img src={bookmarkOff} />
+              <img src={Bookmarked} onClick={Bookmark} />
             </Image>
             <Title>{item.title}</Title>
             <div>{item.sub_title}</div>
@@ -136,17 +155,17 @@ const Contents = ({ item }) => {
     case "Brand":
       return (
         <>
-          <Modalbg open={open} onClick={closeModal} />
+          <Modalbg open={open} onClick={CloseModal} />
           <Modal open={open} img={item.brand_image_url}>
             <ModalTitle>
-              <img src={bookmarkOff} />
+              <img src={Bookmarked} onClick={Bookmark} />
               {item.brand_name}
             </ModalTitle>
-            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
+            <ModalCloseBtn onClick={CloseModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
             <Image img={item.brand_image_url}>
-              <img src={bookmarkOff} />
+              <img src={Bookmarked} onClick={Bookmark} />
             </Image>
             <Title>
               {item.brand_name}
@@ -159,16 +178,16 @@ const Contents = ({ item }) => {
     case "Category":
       return (
         <>
-          <Modalbg open={open} onClick={closeModal} />
+          <Modalbg open={open} onClick={CloseModal} />
           <Modal open={open} img={item.image_url}>
             <ModalTitle>
-              <img src={bookmarkOff} />#{item.title}
+              <img src={Bookmarked} onClick={Bookmark} />#{item.title}
             </ModalTitle>
-            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
+            <ModalCloseBtn onClick={CloseModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
             <Image img={item.image_url}>
-              <img src={bookmarkOff} />
+              <img src={Bookmarked} onClick={Bookmark} />
             </Image>
             <Title>#{item.title}</Title>
           </Content>
@@ -177,17 +196,17 @@ const Contents = ({ item }) => {
     case "Product":
       return (
         <>
-          <Modalbg open={open} onClick={closeModal} />
+          <Modalbg open={open} onClick={CloseModal} />
           <Modal open={open} img={item.image_url}>
             <ModalTitle>
-              <img src={bookmarkOff} />
+              <img src={Bookmarked} onClick={Bookmark} />
               {item.title}
             </ModalTitle>
-            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
+            <ModalCloseBtn onClick={CloseModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
             <Image img={item.image_url}>
-              <img src={bookmarkOff} />
+              <img src={Bookmarked} onClick={Bookmark} />
             </Image>
             <Title>
               {item.title}
