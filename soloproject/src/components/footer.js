@@ -8,6 +8,9 @@ const Foot = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const Footer = () => {

@@ -6,8 +6,9 @@ import { useState } from "react";
 
 const Head = styled.header`
   margin: 0;
-  padding: 40px 10% 0px 10%;
+  padding: 10px 10%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
@@ -70,35 +71,35 @@ const Btn = styled.button`
 const Header = () => {
   const navigate = useNavigate();
 
-  const ClickLogo = () => {
+  const NavigateMain = () => {
     navigate("/");
     setOn(false);
   };
 
   const [on, setOn] = useState(false);
-  const ClickHam = () => {
+  const OpenMenu = () => {
     on ? setOn(false) : setOn(true);
   };
 
-  const ClickList = () => {
+  const NavigateList = () => {
     navigate("/products/list");
     setOn(false);
   };
 
-  const ClickBook = () => {
+  const NavigateBookmark = () => {
     navigate("/bookmark");
     setOn(false);
   };
 
   return (
     <Head>
-      <Logo src={logo} alt="1" onClick={ClickLogo} />
+      <Logo src={logo} alt="1" onClick={NavigateMain} />
       <Span>COZ Shopping</Span>
-      <Ham src={ham} alt="2" onClick={ClickHam} />
+      <Ham src={ham} alt="2" onClick={OpenMenu} />
       <Menu on={on}>
         OOO님 안녕하세요!
-        <Btn onClick={ClickList}>상품리스트 페이지</Btn>
-        <Btn onClick={ClickBook}>북마크 페이지</Btn>
+        <Btn onClick={NavigateList}>상품리스트 페이지</Btn>
+        <Btn onClick={NavigateBookmark}>북마크 페이지</Btn>
       </Menu>
     </Head>
   );
