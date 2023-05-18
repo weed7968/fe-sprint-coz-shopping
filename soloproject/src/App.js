@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Maincont = styled.main`
-  margin: 0 10%;
+  margin: 30px 10%;
 `;
 
 function App() {
