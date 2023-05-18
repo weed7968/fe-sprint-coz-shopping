@@ -108,7 +108,7 @@ const Contents = ({ item }) => {
     setOpen(false);
   };
 
-  const closeModal = () => {
+  const CloseModal = () => {
     setOpen(true);
   };
 
@@ -116,13 +116,13 @@ const Contents = ({ item }) => {
     case "Exhibition":
       return (
         <>
-          <Modalbg open={open} onClick={closeModal} />
+          <Modalbg open={open} onClick={CloseModal} />
           <Modal open={open} img={item.image_url}>
             <ModalTitle>
               <img src={bookmarkOff} />
               {item.title}
             </ModalTitle>
-            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
+            <ModalCloseBtn onClick={CloseModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
             <Image img={item.image_url}>
@@ -136,13 +136,13 @@ const Contents = ({ item }) => {
     case "Brand":
       return (
         <>
-          <Modalbg open={open} onClick={closeModal} />
+          <Modalbg open={open} onClick={CloseModal} />
           <Modal open={open} img={item.brand_image_url}>
             <ModalTitle>
               <img src={bookmarkOff} />
               {item.brand_name}
             </ModalTitle>
-            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
+            <ModalCloseBtn onClick={CloseModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
             <Image img={item.brand_image_url}>
@@ -159,12 +159,12 @@ const Contents = ({ item }) => {
     case "Category":
       return (
         <>
-          <Modalbg open={open} onClick={closeModal} />
+          <Modalbg open={open} onClick={CloseModal} />
           <Modal open={open} img={item.image_url}>
             <ModalTitle>
               <img src={bookmarkOff} />#{item.title}
             </ModalTitle>
-            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
+            <ModalCloseBtn onClick={CloseModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
             <Image img={item.image_url}>
@@ -177,13 +177,13 @@ const Contents = ({ item }) => {
     case "Product":
       return (
         <>
-          <Modalbg open={open} onClick={closeModal} />
+          <Modalbg open={open} onClick={CloseModal} />
           <Modal open={open} img={item.image_url}>
             <ModalTitle>
               <img src={bookmarkOff} />
               {item.title}
             </ModalTitle>
-            <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
+            <ModalCloseBtn onClick={CloseModal}>X</ModalCloseBtn>
           </Modal>
           <Content onClick={OpenModal}>
             <Image img={item.image_url}>
