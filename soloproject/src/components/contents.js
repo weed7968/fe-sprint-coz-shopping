@@ -5,7 +5,7 @@ import bookmarkOff from "../img/bookmarkOff.png";
 import { AppContext } from "../App";
 
 const Content = styled.div`
-  margin-top: 30px;
+  margin-top: 30px !important;
   margin: 0 5px;
   &:hover {
     cursor: pointer;
