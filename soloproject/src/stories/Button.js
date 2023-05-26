@@ -3,9 +3,10 @@ import styled from "styled-components";
 import bookmarkOn from "../img/bookmarkOn.png";
 import bookmarkOff from "../img/bookmarkOff.png";
 
-const ButtonBookmark = styled.img``;
+const ButtonBookmark = styled.img`
+  src: ${props.primary ? bookmarkOn : bookmarkOff};
+`;
 
 export const Button = ({ primary, label, ...rest }) => {
-  const Bookmarked = primary ? bookmarkOn : bookmarkOff;
-  return <ButtonBookmark src={Bookmarked} />;
+  return <ButtonBookmark primary={primary} />;
 };
