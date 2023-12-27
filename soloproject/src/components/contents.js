@@ -175,7 +175,7 @@ const Contents = ({ item }) => {
           </Content>
         </>
       );
-    case "Category":
+    case "Trending":
       return (
         <>
           <Modalbg open={open} onClick={CloseModal} />
