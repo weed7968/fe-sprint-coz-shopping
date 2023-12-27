@@ -25,14 +25,12 @@ function App() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    axios
-      .get("http://cozshopping.codestates-seb.link/api/v1/products?count=")
-      .then((res) => {
-        setData(res.data);
-      });
+    axios.get("/api/v1/products?count=").then((res) => {
+      setData(res.data);
+    });
   }, []);
 
-  const [bookmark, setBookmark] = useState([18, 80, 6, 54]);
+  const [bookmark, setBookmark] = useState([14, 89, 24, 50]);
 
   return (
     <>

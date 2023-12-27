@@ -53,7 +53,7 @@ const Bookmark = ({ data }) => {
   };
 
   const ViewCategory = () => {
-    setFiltered(data.filter((obj) => obj.type === "Category"));
+    setFiltered(data.filter((obj) => obj.type === "Trending"));
   };
 
   const ViewExhibition = () => {
