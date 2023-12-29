@@ -72,7 +72,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const NavigateMain = () => {
-    navigate("/");
+    navigate("/fe-sprint-coz-shopping/");
     setOn(false);
   };
 
@@ -82,12 +82,12 @@ const Header = () => {
   };
 
   const NavigateList = () => {
-    navigate("/products/list");
+    navigate("/fe-sprint-coz-shopping/products/list");
     setOn(false);
   };
 
   const NavigateBookmark = () => {
-    navigate("/bookmark");
+    navigate("/fe-sprint-coz-shopping/bookmark");
     setOn(false);
   };
 
