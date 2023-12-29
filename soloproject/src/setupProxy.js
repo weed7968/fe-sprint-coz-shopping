@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "http://cozshopping.codestates-seb.link",
+      target: "https://cozshopping.codestates-seb.link",
       changeOrigin: true,
     })
   );
