@@ -25,9 +25,11 @@ function App() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    axios.get("/api/v1/products?count=").then((res) => {
-      setData(res.data);
-    });
+    axios
+      .get(`${process.env.REACT_APP_DB_HOST}/api/v1/products?count=`)
+      .then((res) => {
+        setData(res.data);
+      });
   }, []);
 
   const [bookmark, setBookmark] = useState([14, 89, 24, 50]);
