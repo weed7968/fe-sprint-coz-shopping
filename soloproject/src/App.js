@@ -43,9 +43,18 @@ function App() {
           <Maincont>
             {data ? (
               <Routes>
-                <Route path="/" element={<Main data={data} />} />
-                <Route path="/products/list" element={<List data={data} />} />
-                <Route path="/bookmark" element={<Bookmark data={data} />} />
+                <Route
+                  path="/fe-sprint-coz-shopping/"
+                  element={<Main data={data} />}
+                />
+                <Route
+                  path="/fe-sprint-coz-shopping/products/list"
+                  element={<List data={data} />}
+                />
+                <Route
+                  path="/fe-sprint-coz-shopping/bookmark"
+                  element={<Bookmark data={data} />}
+                />
               </Routes>
             ) : (
               <div>Loding...</div>
